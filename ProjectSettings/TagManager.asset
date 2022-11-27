@@ -9,6 +9,8 @@ TagManager:
   - Bar
   - SimpleBox
   - Snake
+  - Food
+  - Head
   layers:
   - Default
   - TransparentFX
