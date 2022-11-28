@@ -25,7 +25,8 @@ public class BlocksManager : MonoBehaviour
     public int minSpawnDist;
     Vector2 previousSnakePos;
     public List<Vector3> SimpleBoxPositions = new List<Vector3>();
-  void Start()
+    public List<Vector3> BoxPositions = new List<Vector3>();
+    void Start()
     {
         thisTime = 0;
         SpawnBarrier();
@@ -107,7 +108,7 @@ void Update()
         GameObject boxInstance;
         if(canSpawnBlock)
         {
-            SimpleBoxPositions.Add(SpawnPos);
+            SimpleBoxPositions.Add(SpawnPos); //правильно
             boxInstance = Instantiate(BlockPrefab, SpawnPos, Quaternion.identity, transform);
             boxInstance.name = "SimpleBox";
             boxInstance.tag = "SimpleBox";

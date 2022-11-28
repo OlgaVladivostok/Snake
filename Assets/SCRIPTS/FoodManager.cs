@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class FoodManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class FoodManager : MonoBehaviour
     public float timeBetweenFoodSpawn;
     private float thisTime;
 
+    //
+    public List<Vector3> SimpleFoodPositions = new List<Vector3>();
+    //
 
     void Start()
     {
@@ -61,7 +65,7 @@ public class FoodManager : MonoBehaviour
                 y = (int)SM.transform.GetChild(0).position.y + distBetweenBlocks * 2 + 10;
             }
 
-            Vector3 spawnPos = new Vector3(x, y, 0);
+            Vector3 SpawnPos = new Vector3(x, y, 0);
 
 
             int number;
@@ -75,7 +79,30 @@ public class FoodManager : MonoBehaviour
             GameObject boxInstance;
 
             if (number == 1)
-                boxInstance = Instantiate(FoodPrefab, spawnPos, Quaternion.identity, transform);
+            //
+            {
+                SimpleFoodPositions.Add(SpawnPos);
+                boxInstance = Instantiate(FoodPrefab, SpawnPos, Quaternion.identity, transform);
+                boxInstance.name = "Food";
+                boxInstance.tag = "Food";
+                boxInstance.layer = LayerMask.NameToLayer("Default");
+
+                boxInstance.AddComponent<Rigidbody>();
+                boxInstance.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+            }
+
+
+            //  boxInstance = Instantiate(FoodPrefab, spawnPos, Quaternion.identity, transform);
+
+
+
+            // Set this part as the parent of the Text Mesh
+            //   FoodAmountTextMesh.transform.parent = boxInstance;
+
+            //Place it correctly
+            //  PartsAmountTextMesh.transform.position = newPart.position +
+            //   new Vector3(0, 0.5f, 0);
 
         }
     }

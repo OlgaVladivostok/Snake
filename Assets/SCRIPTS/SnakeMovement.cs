@@ -111,7 +111,7 @@ public class SnakeMovement : MonoBehaviour
             }
         }
 
-        //Move the snake on the Horizontal Axis with mouse control
+        //Move the snake on the Horizontal Axis with mouse control-неудобно, отключила, поставив кинематик, Speculative Collision и другой скрипт для мыши
         if (Input.GetMouseButtonDown(0))
         {
             mousePreviousPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

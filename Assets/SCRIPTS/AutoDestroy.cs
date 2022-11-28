@@ -87,10 +87,11 @@ public class AutoDestroy : MonoBehaviour
 
 
 
-            if (transform.GetComponentInChildren<ParticleSystem>().isStopped)
+            if (transform.GetComponentInChildren<ParticleSystem>().isStopped) 
+
                 transform.GetComponentInChildren<ParticleSystem>().Play();
 
-            Destroy(this.gameObject, 0.7f);
+            Destroy(this.gameObject);
         }
 
     }
@@ -139,6 +140,8 @@ public class AutoDestroy : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("collision Box");
+
         if (collision.transform.CompareTag("SimpleBox") && transform.CompareTag("Box"))
         {
             Destroy(collision.transform.gameObject);

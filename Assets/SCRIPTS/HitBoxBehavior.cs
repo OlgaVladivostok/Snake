@@ -6,7 +6,7 @@ public class HitBoxBehavior : MonoBehaviour
 {
 
     SnakeMovement SM;
-
+    HitSound HS;
 
     void Start()
     {
@@ -38,6 +38,13 @@ public class HitBoxBehavior : MonoBehaviour
 
 
             SM.SnakeParticle.Play();
+
+
+            //
+            
+
+
+            //
 
             Destroy(this.gameObject);
 
@@ -102,12 +109,13 @@ public class HitBoxBehavior : MonoBehaviour
 
         if (SM.BodyParts.Count > 0)
         {
-            if (collision.transform.tag == "Food" && transform == SM.BodyParts[0])
+            if (collision.transform.CompareTag("Food")) 
+                //&& transform == SM.BodyParts[0])
             {
-                for (int i = 0; i < collision.transform.GetComponent<FoodBehavior>().foodAmount; i++)
-                {
+               // for (int i = 0; i < collision.transform.GetComponent<FoodBehavior>().foodAmount; i++)
+                //{
                     SM.AddBodyPart();
-                }
+                //}
 
                 Destroy(collision.transform.gameObject);
             }
